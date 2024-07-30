@@ -66,7 +66,7 @@ class UserService {
 public static followUser(from: string, to: string) {
   return prismaClient.follows.create({
     data: {
-      follower: { connect: { id: from } },
+      followers: { connect: { id: from } },
       following: { connect: { id: to } },
     },
   });

@@ -53,11 +53,11 @@ const extraResolvers = {
         const result = await prismaClient.follows.findMany({
           where: { following: { id: parent.id } },
           include: {
-            follower: true,
+            followers: true,
           },
         });
-        console.log("Found followers:", result); // Highlighted: Added logging
-        return result.map((el) => el.follower);
+        console.log("Found sfollowerss:", result); // Highlighted: Added logging
+        return result.map((el) => el.followers);
       } catch (error) {
         console.error("Error getting followers:", error); // Highlighted: Added logging
         return [];
@@ -67,7 +67,7 @@ const extraResolvers = {
     following: async (parent: User) => {
       try {
         const result = await prismaClient.follows.findMany({
-          where: { follower: { id: parent.id } },
+          where: { followers: { id: parent.id } },
           include: {
             following: true,
           },
@@ -90,7 +90,7 @@ const extraResolvers = {
 
       try {
         const myfollowings = await prismaClient.follows.findMany({
-          where: { follower: { id: ctx.user?.id } },
+          where: { followers: { id: ctx.user?.id } },
           include: {
             following: {
               include: { followers: { include: { following: true } } },
