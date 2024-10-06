@@ -24,7 +24,7 @@ async function init() {
 
     // Add the route handler for the root path
     app.get('/', (req, res) => {
-        res.send('Welcome to the API!'); // or any message you prefer
+        res.send('Your node.js app deployed successfully!'); // or any message you prefer
     });
 
     // Use the port provided by Render or default to 8000 for local development
